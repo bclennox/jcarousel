@@ -37,6 +37,19 @@
   outline: none;
 }
 
+#basic-carousel {
+  width: 75px;
+}
+
+#basic-carousel .jcarousel-clip-horizontal,
+#basic-carousel .jcarousel-item {
+  width: 75px;
+}
+
+#basic-carousel .jcarousel-item-horizontal {
+  margin: 0;
+}
+
 #basic-carousel .jcarousel-controls-container ul {
   list-style-type: none;
   margin: 10px 0 0 0;
@@ -48,21 +61,20 @@
 }
 
 #basic-carousel .jcarousel-controls-container a {
-  font-size: 75%;
-  text-decoration: none;
-  padding: 0 5px;
-  margin: 0 0 5px 0;
-  border: 1px solid #fff;
-  color: #eee;
-  background-color: #4088b8;
-  font-weight: bold;
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin: 3px;
+  background: url(../images/disc-no-fill.png) center center no-repeat;
+  text-indent: -1000em;
 }
 
 #basic-carousel .jcarousel-controls-container a.selected {
-  background-color: #e57403;
+  background-image: url(../images/disc-fill.png);
 }
 
 /* Override some Tango styles since we're only showing one item at a time */
+
 #advanced-carousel {
   width: 160px;
 }
@@ -74,7 +86,7 @@
 }
 
 #advanced-carousel .jcarousel-item-horizontal {
-  margin: 0 5px;
+  margin: 0;
 }
 
 #advanced-carousel .jcarousel-controls-container ul {
@@ -90,17 +102,15 @@
 #advanced-carousel .jcarousel-controls-container a {
   display: block;
   margin: 2px;
-  text-indent: -1000em;
 }
 
-#advanced-carousel .jcarousel-controls-container a div {
-  width: 9px;
-  height: 9px;
-  background: url(../images/disc-no-fill.png) center center no-repeat;
+#advanced-carousel .jcarousel-controls-container a img {
+  width: 30px;
+  border: 2px transparent solid;
 }
 
-#advanced-carousel .jcarousel-controls-container a.selected div {
-  background-image: url(../images/disc-fill.png);
+#advanced-carousel .jcarousel-controls-container a.selected img {
+  border-color: #4088b8;
 }
 
 </style>
@@ -110,13 +120,14 @@
 // Ride the carousel...
 jQuery(document).ready(function() {
   jQuery("#basic-carousel").jcarousel({
-    controls: true
+    controls: true,
+    scroll: 1
   });
   
   jQuery("#advanced-carousel").jcarousel({
     controls: true,
     createControlCallback: function (carousel, i){
-      return "<div>" + i + "</div>";
+      return $("<img>").attr("src", carousel.list.children("li:eq(" + (i - 1) + ") > img").attr("src"));
     },
     scroll: 1
   })
@@ -136,7 +147,7 @@ jQuery(document).ready(function() {
   </p>
   
   <p>
-    Note that this is a little confusing when displaying multiple items at once. It's probably best to use this only when displaying a single item at a time &mdash; as in the second example &mdash; but nothing mandates this.
+    Note that this is a little confusing when displaying multiple items at once. It's probably best to use this only when displaying a single item at a time, but nothing mandates this.
   </p>
 
   <div id="basic-carousel" class="jcarousel-skin-tango">
@@ -145,12 +156,6 @@ jQuery(document).ready(function() {
       <li><img width="75" height="75" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
       <li><img width="75" height="75" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
       <li><img width="75" height="75" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/58/199481143_3c148d9dd3_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/72/199481203_ad4cdcf109_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/58/199481218_264ce20da0_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/69/199481255_fdfe885f87_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/60/199480111_87d4cb3e38_s.jpg" alt="" /></li>
-      <li><img width="75" height="75" src="http://static.flickr.com/70/229228324_08223b70fa_s.jpg" alt="" /></li>
     </ul>
   </div>
   
@@ -165,12 +170,6 @@ jQuery(document).ready(function() {
       <li><img width="150" height="150" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
       <li><img width="150" height="150" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
       <li><img width="150" height="150" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/58/199481143_3c148d9dd3_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/72/199481203_ad4cdcf109_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/58/199481218_264ce20da0_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/69/199481255_fdfe885f87_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/60/199480111_87d4cb3e38_s.jpg" alt="" /></li>
-      <li><img width="150" height="150" src="http://static.flickr.com/70/229228324_08223b70fa_s.jpg" alt="" /></li>
     </ul>
   </div>
 
