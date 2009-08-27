@@ -11,7 +11,7 @@
 <!--
   jCarousel library
 -->
-<script type="text/javascript" src="../lib/jquery.jcarousel.pack.js"></script>
+<script type="text/javascript" src="../lib/jquery.jcarousel.js"></script>
 <!--
   jCarousel core stylesheet
 -->
@@ -23,7 +23,7 @@
 
 <style type="text/css">
 
-.jcarousel-controls-container:after {
+.jcarousel-pager-container:after {
   content: "";
   clear: both;
   display: block;
@@ -32,8 +32,8 @@
   visibility: hidden;
 }
 
-.jcarousel-controls-container a:focus,
-.jcarousel-controls-container a:active {
+.jcarousel-pager-container a:focus,
+.jcarousel-pager-container a:active {
   outline: none;
 }
 
@@ -50,17 +50,17 @@
   margin: 0;
 }
 
-#basic-carousel .jcarousel-controls-container ul {
+#basic-carousel .jcarousel-pager-container ul {
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
 }
 
-#basic-carousel .jcarousel-controls-container li {
+#basic-carousel .jcarousel-pager-container li {
   float: left;
 }
 
-#basic-carousel .jcarousel-controls-container a {
+#basic-carousel .jcarousel-pager-container a {
   display: block;
   width: 9px;
   height: 9px;
@@ -69,7 +69,7 @@
   text-indent: -1000em;
 }
 
-#basic-carousel .jcarousel-controls-container a.selected {
+#basic-carousel .jcarousel-pager-container a.selected {
   background-image: url(../images/disc-fill.png);
 }
 
@@ -89,27 +89,27 @@
   margin: 0;
 }
 
-#advanced-carousel .jcarousel-controls-container ul {
+#advanced-carousel .jcarousel-pager-container ul {
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
 }
 
-#advanced-carousel .jcarousel-controls-container li {
+#advanced-carousel .jcarousel-pager-container li {
   float: left;
 }
 
-#advanced-carousel .jcarousel-controls-container a {
+#advanced-carousel .jcarousel-pager-container .pager-item {
   display: block;
   margin: 2px;
 }
 
-#advanced-carousel .jcarousel-controls-container a img {
+#advanced-carousel .jcarousel-pager-container .pager-item img {
   width: 30px;
   border: 2px transparent solid;
 }
 
-#advanced-carousel .jcarousel-controls-container a.selected img {
+#advanced-carousel .jcarousel-pager-container .pager-item.selected img {
   border-color: #4088b8;
 }
 
@@ -120,13 +120,13 @@
 // Ride the carousel...
 jQuery(document).ready(function() {
   jQuery("#basic-carousel").jcarousel({
-    controls: true,
+    pager: true,
     scroll: 1
   });
   
   jQuery("#advanced-carousel").jcarousel({
-    controls: true,
-    createControlCallback: function (carousel, i){
+    pager: true,
+    createPagerItemCallback: function (carousel, i){
       return $("<img>").attr("src", carousel.list.children("li:eq(" + (i - 1) + ") > img").attr("src"));
     },
     scroll: 1
@@ -141,9 +141,9 @@ jQuery(document).ready(function() {
   <h1>jCarousel</h1>
   <h2>Riding carousels with jQuery</h2>
 
-  <h3>Carousel with external controls</h3>
+  <h3>Carousel with pager</h3>
   <p>
-    This carousel demonstrates using the <code>controls</code> option to automatically generate a list of control elements.
+    This carousel demonstrates using the <code>pager</code> option to automatically generate a pager.
   </p>
   
   <p>
@@ -159,9 +159,9 @@ jQuery(document).ready(function() {
     </ul>
   </div>
   
-  <h3>Carousel with <em>fancy</em> external controls</h3>
+  <h3>Carousel with <em>fancy</em> pager</h3>
   <p>
-    This carousel demonstrates using the <code>createControlCallback</code> with the <code>controls</code> option.
+    This carousel demonstrates using the <code>createPagerItemCallback</code> with the <code>pager</code> option.
   </p>
   
   <div id="advanced-carousel" class="jcarousel-skin-tango">

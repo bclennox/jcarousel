@@ -49,8 +49,8 @@
         <li><a href="examples/static_auto.html">Carousel with autoscrolling</a></li>
         <li><a href="examples/static_callbacks.html">Carousel illustrating the
           callback functions</a></li>
-        <li><a href="examples/static_controls.html">Carousel with external controls (manual)</a></li>
-        <li><a href="examples/static_auto_controls.html">Carousel with external controls (automatic)</a></li>
+        <li><a href="examples/static_controls.html">Carousel with external controls</a></li>
+        <li><a href="examples/static_pager.html">Carousel with pager</a></li>
         <li><a href="examples/static_start.html">Carousel with custom start position</a></li>
         <li><a href="examples/static_multiple.html">Multiple carousels on one page</a></li>
       </ul>
@@ -282,10 +282,10 @@ function itemLoadCallbackFunction(carousel, state)
           to implement it.</td>
       </tr>
       <tr>
-        <td>controls</td>
+        <td>pager</td>
         <td>boolean</td>
         <td>false</td>
-        <td>Specifies whether to automatically generate an external list of controls that allow random access into the carousel. If <code>true</code>, then an additional <code>ul</code> element containing one item per item in the original list will be generated and placed in a <code>div.jcarousel-controls-container</code> that is then appended to the <code>div.jcarousel-container</code>. Also see the <code>createControlCallback</code> option.</td>
+        <td>Specifies whether to automatically generate a pager that allows random access into the carousel. If <code>true</code>, then an additional <code>ul</code> element containing one item per item in the original list will be generated and placed in a <code>div.jcarousel-pager-container</code> that is then appended to the <code>div.jcarousel-container</code>. Also see the <code>createPagerItemCallback</code> option.</td>
       </tr>
       <tr>
         <td>initCallback</td>
@@ -414,11 +414,11 @@ itemVisibleOutCallback: {
 }</pre> </td>
       </tr>
       <tr>
-        <td>createControlCallback</td>
+        <td>createPagerItemCallback</td>
         <td>function</td>
         <td>null</td>
-        <td>JavaScript function that is called when external control items are being created (see the <code>controls</code> option above). The responsibility of this method is to generate some HTML that will be used in marking up the list item. Two parameters are passed: The instance of the
-          requesting carousel and the 1-based index of the control currently being generated.</td>
+        <td>JavaScript function that is called when pager items are being created (see the <code>pager</code> option above). The responsibility of this method is to generate some HTML that will be used in marking up the list item. Two parameters are passed: The instance of the
+          requesting carousel and the 1-based index of the pager item currently being generated.</td>
       </tr>
       <tr>
         <td>buttonNextCallback</td>
