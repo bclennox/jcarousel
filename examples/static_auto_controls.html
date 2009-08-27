@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+<head>
+<title>jCarousel Examples</title>
+<link href="../style.css" rel="stylesheet" type="text/css" />
+<!--
+  jQuery library
+-->
+<script type="text/javascript" src="../lib/jquery-1.3.2.min.js"></script>
+<!--
+  jCarousel library
+-->
+<script type="text/javascript" src="../lib/jquery.jcarousel.pack.js"></script>
+<!--
+  jCarousel core stylesheet
+-->
+<link rel="stylesheet" type="text/css" href="../lib/jquery.jcarousel.css" />
+<!--
+  jCarousel skin stylesheet
+-->
+<link rel="stylesheet" type="text/css" href="../skins/tango/skin.css" />
+
+<style type="text/css">
+
+.jcarousel-controls-container:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+.jcarousel-controls-container a:focus,
+.jcarousel-controls-container a:active {
+  outline: none;
+}
+
+#basic-carousel .jcarousel-controls-container ul {
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+#basic-carousel .jcarousel-controls-container li {
+  float: left;
+}
+
+#basic-carousel .jcarousel-controls-container a {
+  font-size: 75%;
+  text-decoration: none;
+  padding: 0 5px;
+  margin: 0 0 5px 0;
+  border: 1px solid #fff;
+  color: #eee;
+  background-color: #4088b8;
+  font-weight: bold;
+}
+
+#basic-carousel .jcarousel-controls-container a.selected {
+  background-color: #e57403;
+}
+
+/* Override some Tango styles since we're only showing one item at a time */
+#advanced-carousel {
+  width: 160px;
+}
+
+#advanced-carousel .jcarousel-clip-horizontal,
+#advanced-carousel .jcarousel-item {
+  width: 160px;
+  height: 150px;
+}
+
+#advanced-carousel .jcarousel-item-horizontal {
+  margin: 0 5px;
+}
+
+#advanced-carousel .jcarousel-controls-container ul {
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+#advanced-carousel .jcarousel-controls-container li {
+  float: left;
+}
+
+#advanced-carousel .jcarousel-controls-container a {
+  display: block;
+  margin: 2px;
+  text-indent: -1000em;
+}
+
+#advanced-carousel .jcarousel-controls-container a div {
+  width: 9px;
+  height: 9px;
+  background: url(../images/disc-no-fill.png) center center no-repeat;
+}
+
+#advanced-carousel .jcarousel-controls-container a.selected div {
+  background-image: url(../images/disc-fill.png);
+}
+
+</style>
+
+<script type="text/javascript">
+
+// Ride the carousel...
+jQuery(document).ready(function() {
+  jQuery("#basic-carousel").jcarousel({
+    controls: true
+  });
+  
+  jQuery("#advanced-carousel").jcarousel({
+    controls: true,
+    createControlCallback: function (carousel, i){
+      return "<div>" + i + "</div>";
+    },
+    scroll: 1
+  })
+});
+
+</script>
+
+</head>
+<body>
+<div id="wrap">
+  <h1>jCarousel</h1>
+  <h2>Riding carousels with jQuery</h2>
+
+  <h3>Carousel with external controls</h3>
+  <p>
+    This carousel demonstrates using the <code>controls</code> option to automatically generate a list of control elements.
+  </p>
+  
+  <p>
+    Note that this is a little confusing when displaying multiple items at once. It's probably best to use this only when displaying a single item at a time &mdash; as in the second example &mdash; but nothing mandates this.
+  </p>
+
+  <div id="basic-carousel" class="jcarousel-skin-tango">
+    <ul>
+      <li><img width="75" height="75" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/58/199481143_3c148d9dd3_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/72/199481203_ad4cdcf109_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/58/199481218_264ce20da0_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/69/199481255_fdfe885f87_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/60/199480111_87d4cb3e38_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/70/229228324_08223b70fa_s.jpg" alt="" /></li>
+    </ul>
+  </div>
+  
+  <h3>Carousel with <em>fancy</em> external controls</h3>
+  <p>
+    This carousel demonstrates using the <code>createControlCallback</code> with the <code>controls</code> option.
+  </p>
+  
+  <div id="advanced-carousel" class="jcarousel-skin-tango">
+    <ul>
+      <li><img width="150" height="150" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/58/199481143_3c148d9dd3_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/72/199481203_ad4cdcf109_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/58/199481218_264ce20da0_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/69/199481255_fdfe885f87_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/60/199480111_87d4cb3e38_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/70/229228324_08223b70fa_s.jpg" alt="" /></li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
