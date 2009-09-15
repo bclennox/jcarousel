@@ -113,6 +113,10 @@
   border-color: #4088b8;
 }
 
+#conditional-carousel-without-pager {
+  margin-bottom: 15px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -130,7 +134,15 @@ jQuery(document).ready(function() {
       return $("<img>").attr("src", carousel.list.children("li:eq(" + (i - 1) + ") > img").attr("src"));
     },
     scroll: 1
-  })
+  });
+  
+  jQuery(".conditional-carousel").jcarousel({
+    pager: function (carousel){
+      return carousel.list.children("li").size() > 1;
+    },
+    scroll: 1,
+    visible: 1
+  });
 });
 
 </script>
@@ -145,6 +157,11 @@ jQuery(document).ready(function() {
   <p>
     This carousel demonstrates using the <code>pager</code> option to automatically generate a pager.
   </p>
+  
+  <code class="block">jQuery("#basic-carousel").jcarousel({
+  pager: true,
+  scroll: 1
+});</code>
   
   <p>
     Note that this is a little confusing when displaying multiple items at once. It's probably best to use this only when displaying a single item at a time, but nothing mandates this.
@@ -164,12 +181,46 @@ jQuery(document).ready(function() {
     This carousel demonstrates using the <code>createPagerItemCallback</code> with the <code>pager</code> option.
   </p>
   
+  <code class="block">jQuery("#advanced-carousel").jcarousel({
+  pager: true,
+  createPagerItemCallback: function (carousel, i){
+    return $("&lt;img&gt;").attr("src", carousel.list.children("li:eq(" + (i - 1) + ") &gt; img").attr("src"));
+  },
+  scroll: 1
+});</code>
+  
   <div id="advanced-carousel" class="jcarousel-skin-tango">
     <ul>
       <li><img width="150" height="150" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
       <li><img width="150" height="150" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
       <li><img width="150" height="150" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
       <li><img width="150" height="150" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
+    </ul>
+  </div>
+  
+  <h3>Carousel with <em>conditional</em> pager</h3>
+  <p>
+    These carousels demonstrates using the <code>pager</code> option with a callback that returns a boolean (in this case, only when the list has more than one child).
+  </p>
+  
+  <code class="block">jQuery(".conditional-carousel").jcarousel({
+  pager: function (carousel){
+    return carousel.list.children("li").size() &gt; 1;
+  },
+  scroll: 1,
+  visible: 1
+});</code>
+  
+  <div id="conditional-carousel-without-pager" class="jcarousel-skin-tango conditional-carousel">
+    <ul>
+      <li><img width="150" height="150" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
+    </ul>
+  </div>
+
+  <div id="conditional-carousel-with-pager" class="jcarousel-skin-tango conditional-carousel">
+    <ul>
+      <li><img width="150" height="150" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
+      <li><img width="150" height="150" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
     </ul>
   </div>
 

@@ -99,3 +99,11 @@ td pre {
     padding: 5px;
     margin: 5px 0;
 }
+
+code.block {
+  display: block;
+  white-space: pre;
+  padding: 10px;
+  border: 1px #4088b8 solid;
+  background-color: #E6EEF2;
+}

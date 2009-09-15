@@ -283,9 +283,9 @@ function itemLoadCallbackFunction(carousel, state)
       </tr>
       <tr>
         <td>pager</td>
-        <td>boolean</td>
+        <td>mixed</td>
         <td>false</td>
-        <td>Specifies whether to automatically generate a pager that allows random access into the carousel. If <code>true</code>, then an additional <code>ul</code> element containing one item per item in the original list will be generated and placed in a <code>div.jcarousel-pager-container</code> that is then appended to the <code>div.jcarousel-container</code>. Also see the <code>createPagerItemCallback</code> option.</td>
+        <td>Specifies whether to automatically generate a pager that allows random access into the carousel. If <code>true</code>, then an additional <code>ul</code> element containing one item per item in the original list will be generated and placed in a <code>div.jcarousel-pager-container</code> that is then appended to the <code>div.jcarousel-container</code>.<br><br>You may also pass in a callback that returns a boolean to determine whether to show the pager. The callback will receive the carousel object itself as an argument.<br><br>Also see the <code>createPagerItemCallback</code> option.</td>
       </tr>
       <tr>
         <td>initCallback</td>
