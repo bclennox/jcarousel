@@ -51,6 +51,7 @@
           callback functions</a></li>
         <li><a href="examples/static_controls.html">Carousel with external controls</a></li>
         <li><a href="examples/static_pager.html">Carousel with pager</a></li>
+        <li><a href="examples/static_fade.html">Carousel with fade</a></li>
         <li><a href="examples/static_start.html">Carousel with custom start position</a></li>
         <li><a href="examples/static_multiple.html">Multiple carousels on one page</a></li>
       </ul>
@@ -280,6 +281,12 @@ function itemLoadCallbackFunction(carousel, state)
           as option to enable support for circular carousels. See the example
           <a href="examples/special_circular.html">Circular carousel</a> on how
           to implement it.</td>
+      </tr>
+      <tr>
+        <td>fade</td>
+        <td>mixed</td>
+        <td>false</td>
+        <td>Causes the items to fade out and back in rather than scroll. (So really it's no longer a carousel, but now we're just arguing semantics.)<br><br>This option can be an integer specifying the fade duration, one of the jQuery duration strings like "fast" or "slow", or simply a boolean <code>true</code>, which defaults to "fast".</td>
       </tr>
       <tr>
         <td>pager</td>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+<head>
+<title>jCarousel Examples</title>
+<link href="../style.css" rel="stylesheet" type="text/css" />
+<!--
+  jQuery library
+-->
+<script type="text/javascript" src="../lib/jquery-1.3.2.min.js"></script>
+<!--
+  jCarousel library
+-->
+<script type="text/javascript" src="../lib/jquery.jcarousel.js"></script>
+<!--
+  jCarousel core stylesheet
+-->
+<link rel="stylesheet" type="text/css" href="../lib/jquery.jcarousel.css" />
+<!--
+  jCarousel skin stylesheet
+-->
+<link rel="stylesheet" type="text/css" href="../skins/tango/skin.css" />
+
+<style type="text/css">
+
+#carousel,
+#carousel .jcarousel-clip-horizontal,
+#carousel .jcarousel-item {
+  width: 75px;
+}
+
+#carousel .jcarousel-item-horizontal {
+  margin: 0;
+}
+
+</style>
+
+<script type="text/javascript">
+
+// Ride the carousel...
+jQuery(document).ready(function() {
+  jQuery("#carousel").jcarousel({
+    fade: true,
+    scroll: 1
+  });
+});
+
+</script>
+
+</head>
+<body>
+<div id="wrap">
+  <h1>jCarousel</h1>
+  <h2>Riding carousels with jQuery</h2>
+
+  <h3>Carousel with fade</h3>
+  <p>
+    This carousel demonstrates using the <code>fade</code> option to fade between images instead of scrolling.
+  </p>
+  
+  <code class="block">jQuery("#carousel").jcarousel({
+  fade: true,
+  scroll: 1
+});</code>
+  
+  <div id="carousel" class="jcarousel-skin-tango">
+    <ul>
+      <li><img width="75" height="75" src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" alt="" /></li>
+      <li><img width="75" height="75" src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" alt="" /></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
